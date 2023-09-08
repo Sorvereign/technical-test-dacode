@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --app-height: 100vh;
+  --app-bg-color: #18181b;
+  --app-text-color: white;
+  --header-height: 64px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+html,
+body {
+  height: var(--app-height);
+  color: var(--app-text-color);
+}
+
+#__next {
+  height: var(--app-height);
+}
+
+main {
+  height: calc(100% - var(--header-height));
+  height: -webkit-calc(100% - var(--header-height));
+  height: -moz-calc(100% - var(--header-height));
+}
+
+@keyframes flip {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1, 0);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.flip {
+  animation: flip;
+  animation-duration: 500ms;
+}
+
+.tile {
+  background-color: transparent;
+  width: 62px;
+  height: 62px;
+}
+
+.tile-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.tile.evaluated .tile-inner {
+  transform: rotateX(180deg);
+}
+
+.tile-front,
+.tile-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.tile-back {
+  transform: rotateX(180deg);
+}
