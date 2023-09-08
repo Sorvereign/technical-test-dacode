@@ -61,7 +61,7 @@ export const getServerSideProps: GetServerSideProps<{
     return {
       props: {
         solution,
-        wordList: removeAccents(fiveLetterWords),
+        wordList: removeAccents(fiveLetterWords) as string[],
       },
     };
   } catch (error) {
